@@ -5,8 +5,8 @@ from constants import WIDTH, HEIGHT
 
 class Tank:
     def __init__(self):
-        self.rect = pygame.Rect(WIDTH // 2 - 10, HEIGHT // 2 - 10, 20, 20)
-        self.color = pygame.Color('red')
+        self.image = pygame.image.load('images/tank.png')
+        self.rect = self.image.get_rect().move(WIDTH // 2, HEIGHT // 2)
         self._abs_speed = 10
 
     def move(self, direction_key):
@@ -19,5 +19,5 @@ class Tank:
         self.rect.move_ip(get_new_speed[direction_key])
 
     def draw_on(self, screen):
-        pygame.draw.rect(screen, self.color, self.rect)
+        screen.blit(self.image, self.rect)
 
